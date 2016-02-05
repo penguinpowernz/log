@@ -43,6 +43,9 @@ type Logger interface {
 	Warning(args ...interface{})
 	Warningf(format string, args ...interface{})
 	Warningln(args ...interface{})
+	Warn(args ...interface{})
+	Warnf(format string, args ...interface{})
+	Warnln(args ...interface{})
 	Notice(args ...interface{})
 	Noticef(format string, args ...interface{})
 	Noticeln(args ...interface{})
@@ -176,6 +179,23 @@ func (l *logger) Warningf(format string, args ...interface{}) {
 func (l *logger) Warningln(args ...interface{}) {
 	l.log(WARNING, fmt.Sprintln(args...))
 }
+
+// Warn aliases to warning
+
+func (l *logger) Warn(args ...interface{}) {
+	l.Warning(args);
+}
+
+func (l *logger) Warnf(format string, args ...interface{}) {
+	l.Warningf(format, args);
+}
+
+func (l *logger) Warnln(args ...interface{}) {
+	l.Warningln(args)
+}
+
+
+
 
 func (l *logger) Notice(args ...interface{}) {
 	l.log(NOTICE, fmt.Sprint(args...))
